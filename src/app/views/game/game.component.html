@@ -1,0 +1,43 @@
+<div class="container">
+    <h1>Match Hiragana/Katakana to Romaji</h1>
+    <div class="mode-switch">
+      <button (click)="switchMode('hiragana')" [class.active]="mode === 'hiragana'">Hiragana</button>
+      <button (click)="switchMode('katakana')" [class.active]="mode === 'katakana'">Katakana</button>
+    </div>
+
+    <button class="reset-button" (click)="resetGame()">Reset</button>
+    
+    <div class="game-container">
+      <!-- Characters -->
+      <div class="drag-container">
+        <div
+          class="drag-item"
+          *ngFor="let char of randomizedCharacters"
+          [class.dragged]="draggedCharacter === char" 
+          draggable="true"
+          (dragstart)="onDragStart($event, char)"
+          (dragend)="onDragEnd()"
+        >
+          {{ char.character }}
+        </div>
+      </div>
+  
+      <!-- romaji -->
+      <div class="drop-container">
+        <div
+          class="drop-zone"
+          *ngFor="let char of randomizedDropZones"
+          [class.correct]="char.matched === true"
+          [class.incorrect]="char.matched === false"
+          (drop)="onDrop($event, char)"
+          (dragover)="onDragOver($event)"
+        >
+          {{ char.romaji }}
+        </div>
+      </div>
+    </div>
+  
+    <div *ngIf="isGameComplete" class="success-message">
+      🎉 Congratulations! You matched all the characters correctly! 🎉
+    </div>
+  </div>

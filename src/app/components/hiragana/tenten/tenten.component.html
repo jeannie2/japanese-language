@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="grid-container">
+    <div
+      class="grid-item"
+      *ngFor="let char of tentenCharacters"
+      [class.faded]="!char.tenten"
+      (click)="char.tenten ? showCharacterDetails(char) : null"
+    >
+     <!-- tenten -->
+      <ng-container *ngIf="char.tenten; else defaultChar">
+        <span class="romaji"> {{ char.tenten.romaji }} </span>
+        <span class="hiragana"> {{ char.tenten.character }} </span>
+      </ng-container>
+
+      <ng-template #defaultChar>
+        <span class="romaji"> {{ char.romaji }} </span>
+        <span class="hiragana"> {{ char.character }} </span>
+      </ng-template>
+    </div>
+  </div>
+
+  <div *ngIf="selectedCharacter" class="details-container">
+    <button (click)="closeDetails()">X</button>
+    <h1 class="popup-title">{{ selectedCharacter.romaji }} ({{ selectedCharacter.character }})</h1>
+    <!-- <img [src]="selectedCharacter.gifUrl" alt="Hiragana GIF"> -->
+    <p>Pronunciation: {{ selectedCharacter.pronunciation }}</p>
+    <ul>
+      <li *ngFor="let example of selectedCharacter.examples" [innerHTML]="formatExample(example)"></li>
+    </ul>
+    <button class="close-button" (click)="closeDetails()">Close</button>
+  </div>
+</div>

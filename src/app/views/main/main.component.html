@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="button-container">
+    <button (click)="setActiveComponent(ActiveComponent.Hiragana)">Hiragana</button>
+    <button (click)="setActiveComponent(ActiveComponent.Katakana)">Katakana</button>
+    <button (click)="setActiveComponent(ActiveComponent.HiraganaTenten)">Hiragana Tenten</button>
+    <button (click)="setActiveComponent(ActiveComponent.KatakanaTenten)">Katakana Tenten</button>
+  </div>
+
+  <app-hiragana *ngIf="activeComponent === ActiveComponent.Hiragana"></app-hiragana>
+  <app-katakana *ngIf="activeComponent === ActiveComponent.Katakana"></app-katakana>
+ 
+  <app-hiragana-tenten *ngIf="activeComponent === ActiveComponent.HiraganaTenten"></app-hiragana-tenten>
+  <app-katakana-tenten *ngIf="activeComponent === ActiveComponent.KatakanaTenten"></app-katakana-tenten>
+</div>

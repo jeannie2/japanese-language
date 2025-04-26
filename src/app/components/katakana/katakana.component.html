@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="grid-container">
+    <div
+      class="grid-item"
+      *ngFor="let char of katakanaCharacters"
+      (click)="showCharacterDetails(char)"
+    >
+      <span class="romaji"> {{ char.romaji }} </span>
+      <span class="katakana"> {{ char.character }} </span>
+    </div>
+  </div>
+
+  <div *ngIf="selectedCharacter" class="details-container">
+    <button (click)="closeDetails()">X</button>
+    <h1 class="popup-title"> {{ selectedCharacter.romaji }} ({{ selectedCharacter.character }}) </h1>
+    <img
+      *ngIf="selectedGifUrl"
+      [src]="selectedGifUrl"
+      alt="Katakana GIF for {{ selectedCharacter.character }}"
+    />
+    <p *ngIf="!selectedGifUrl">No GIF available for this character.</p>
+    <p>Pronunciation: {{ selectedCharacter.pronunciation }} </p>
+    <ul>
+      <li *ngFor="let example of selectedCharacter.examples" [innerHTML]="formatExample(example)"></li>
+    </ul>
+    <button class="close-button" (click)="closeDetails()">Close</button>
+  </div>
+</div>

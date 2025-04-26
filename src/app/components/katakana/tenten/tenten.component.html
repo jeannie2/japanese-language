@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="grid-container">
+    <div
+      class="grid-item"
+      *ngFor="let char of tentenCharacters"
+      [class.faded]="!char.tenten && !char.maru"
+      (click)="char.tenten || char.maru ? showCharacterDetails(char) : null"
+    >
+    
+      <div class="character">
+        <span class="romaji">{{ char.romaji }}</span>
+        <span class="katakana">{{ char.character }}</span>
+      </div>
+
+      <!-- tenten -->
+      <div class="character" *ngIf="char.tenten">
+        <span class="romaji">{{ char.tenten.romaji }}</span>
+        <span class="katakana">{{ char.tenten.character }}</span>
+      </div>
+
+      <!-- maru --> 
+      <div class="character" *ngIf="char.maru">
+        <span class="romaji">{{ char.maru.romaji }}</span>
+        <span class="katakana">{{ char.maru.character }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="selectedCharacter" class="details-container">
+    <button (click)="closeDetails()">X</button>
+    <h1 class="popup-title">
+      {{ selectedCharacter.romaji }} ({{ selectedCharacter.character }})
+    </h1>
+    <!-- <img [src]="selectedCharacter.gifUrl" alt="Katakana GIF"> -->
+    <p>Pronunciation: {{ selectedCharacter.pronunciation }}</p>
+    <ul>
+      <li *ngFor="let example of selectedCharacter.examples" [innerHTML]="formatExample(example)"></li>
+    </ul>
+    <button class="close-button" (click)="closeDetails()">Close</button>
+  </div>
+</div>

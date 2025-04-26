@@ -1,0 +1,135 @@
+.board {
+  background: #f5deb3;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.kanji-item {
+  padding: 10px;
+  border-radius: 8px;
+  color: #333;
+  font-size: 32px; 
+  font-weight: bold;
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  background: var(--post-it-color, yellow); 
+  transform: rotate(calc(var(--rotation, 0) * 1deg)); 
+}
+  
+
+.kanji-item .romaji {
+  font-size: 14px; 
+  color: #555; 
+  display: block;
+  margin-top: 5px;
+}
+
+.kanji-item small {
+  font-size: 12px;
+  color: #555;
+  display: block;
+  margin-top: 5px;
+}
+
+.kanji-item::before {
+  content: '';
+  width: 15px;
+  height: 15px;
+  background: red;
+  border-radius: 50%;
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.kanji-form {
+  margin: 20px auto;
+  padding: 15px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 300px; 
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.kanji-form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.kanji-form input,
+.kanji-form select,
+.kanji-form button {
+  padding: 8px;
+  font-size: 14px; 
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.kanji-form button {
+  background: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.kanji-form button:hover {
+  background: #0056b3;
+}
+
+.kanji-item button {
+  background: rgba(255, 255, 255, 0.8); 
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  margin-top: 5px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.kanji-item button:hover {
+  background: #f0f0f0;
+  transform: scale(1.05); 
+}
+
+.kanji-item button + button {
+  margin-left: 5px;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+h1::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: #007bff;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}

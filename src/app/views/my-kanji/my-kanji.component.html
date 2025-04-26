@@ -1,0 +1,47 @@
+<h1>My Kanji</h1>
+
+<!-- add new kanji -->
+<form class="kanji-form" (ngSubmit)="editingKanjiId ? updateKanji() : addKanji(character, romaji, color, category)">
+  <label for="character">Kanji:</label>
+  <input 
+    type="text" 
+    id="character" 
+    [(ngModel)]="character"
+    name="character" 
+    required
+  />
+
+  <label for="romaji">Romaji:</label>
+  <input type="text" id="romaji" [(ngModel)]="romaji" name="romaji" required />
+
+  <label for="color">Color:</label>
+  <select id="color" [(ngModel)]="color" name="color" required>
+    <option value="yellow">Yellow</option>
+    <option value="blue">Blue</option>
+    <option value="green">Green</option>
+    <option value="pink">Pink</option>
+    <option value="orange">Orange</option>
+  </select>
+
+  <label for="category">Category:</label>
+  <input type="text" id="category" [(ngModel)]="category" name="category" placeholder="e.g., N5, N4" />
+
+  <button type="submit"> {{ editingKanjiId ? 'Update Kanji' : 'Add Kanji' }} </button>
+  <button type="button" *ngIf="editingKanjiId" (click)="clearForm()">Cancel</button>
+</form>
+
+<!-- display kanji -->
+<div class="board">
+  <div
+    *ngFor="let kanji of savedKanji$ | async"
+    class="kanji-item"
+    [style.background]="kanji.color"
+    [style.transform]="'rotate(' + kanji.rotation + 'deg)'"
+  >
+    {{ kanji.character }} <br />
+    <span class="romaji"> ({{ kanji.romaji }}) </span>
+    <small> {{ kanji.category || 'No Category' }} </small>
+    <button (click)="editKanji(kanji)">Edit</button>
+    <button (click)="deleteKanji(kanji.id)">Delete</button>
+  </div>
+</div>

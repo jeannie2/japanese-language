@@ -1,0 +1,182 @@
+.container {
+  min-height: calc(100vh - 60px);
+  padding: 0;
+  padding: 60px 0;
+  overflow: auto;
+  background: linear-gradient(135deg, #f9f9f9, #e0e0e0); 
+}
+  
+.game-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  gap: 50px; 
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+.drag-container,
+.drop-container {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  gap: 20px;
+}
+
+.drag-item {
+  background-color: #007bff; 
+  color: white; 
+  cursor: grab;
+  font-size: 2.5rem; 
+  font-weight: bold;
+  border-radius: 8px; 
+  transition: transform 0.2s, opacity 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.drag-item,
+.drop-zone {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 60px; 
+  width: 100px; 
+  padding: 0px; 
+  border-radius: 8px; 
+  transition: transform 0.2s, opacity 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.drag-item:hover {
+  transform: scale(1.05); 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+}
+
+.drag-item.dragged {
+  opacity: 0; 
+}
+
+.drop-zone {
+  background-color: #f0f0f0;
+  border: 2px dashed #ccc;
+  text-align: center;
+  padding: 10px;
+  height: 50px;
+  font-size: 1.5rem; 
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.drop-zone.correct {
+  background-color: #d4edda;
+  border-color: #28a745;
+}
+
+.drop-zone.incorrect {
+  background-color: #f8d7da; 
+  border-color: #dc3545;
+}
+
+.drop-zone:hover:not(.correct):not(.incorrect) {
+  background-color: #e0e0e0; 
+}
+
+.reset-button {
+  margin-bottom: 20px;
+  padding: 12px 30px;
+  font-size: 1.2rem; 
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  border: none;
+  border-radius: 8px; 
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+.reset-button:hover {
+  background: linear-gradient(135deg, #0056b3, #003f7f); 
+  transform: scale(1.1); 
+}
+
+.reset-button:active {
+  transform: scale(0.95); 
+}
+
+.success-message {
+  margin-top: 20px;
+  padding: 15px 30px;
+  font-size: 2rem; 
+  color: #155724; 
+  background-color: #d4edda; 
+  border: 2px solid #28a745; 
+  border-radius: 10px; 
+  text-align: center;
+  font-family: "Mochiy Pop P One", sans-serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.mode-switch {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.mode-switch button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  background-color: #e0e0e0;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.mode-switch button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .game-container {
+    gap: 15px;
+  }
+
+  .drag-item,
+  .drop-zone {
+    height: 50px;
+    width: 80px;
+    font-size: 1.2rem;
+  }
+
+  .reset-button {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+
+  .success-message {
+    font-size: 1.5rem;
+    padding: 10px 20px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,43 @@
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  box-sizing: border-box; 
+  z-index: 1000; 
+  padding: 10px 20px;
+  background-color: navy;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.navbar h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.navbar nav {
+  display: flex;
+  gap: 15px;
+}
+
+.navbar nav a {
+  transition: color 0.3s ease;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: "Hachi Maru Pop", cursive;
+  color: white;
+}
+
+.navbar nav a:hover {
+  color: #ffdd57;
+}
+
+.navbar nav a.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
