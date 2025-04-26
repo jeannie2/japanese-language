@@ -38,3 +38,19 @@
   background: linear-gradient(135deg, #cccccc, #b3b3b3); 
 }
 
+@media (max-width: 768px) {
+  .button-container {
+    position: relative; 
+    left: 0;
+    flex-direction: row; 
+    justify-content: space-around; 
+    background: rgba(255, 255, 255, 0.9); 
+    margin-top: 100px;
+    margin-bottom: 0;
+  }
+
+  .button-container button {
+    margin: 5px; 
+    flex: 1; 
+  }
+}
